@@ -15,6 +15,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # Custom $PATH with extra locations.
 #export PATH=/usr/local/bin:/Users/jgeerling/bin:/usr/local/sbin:/usr/local/git/bin:/Developer/Eclipse/android-sdk-macosx/platform-tools:/Developer/Eclipse/android-sdk-macosx/tools:$PATH
 
+# Add composer libraries to $PATH.
+export PATH=~/.composer/vendor/bin:$PATH
+
 # Flush DNS cache (See: http://support.apple.com/kb/ht5343).
 alias flush-dns='sudo killall -HUP mDNSResponder'
 

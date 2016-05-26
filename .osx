@@ -26,6 +26,7 @@ fi
 
 # Login items
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Spectacle.app", hidden:false}'
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Private Internet Access.app", hidden:false}'
 
 ###############################################################################
 # General UI/UX                                                               #

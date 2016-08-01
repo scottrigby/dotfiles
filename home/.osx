@@ -14,7 +14,9 @@
 # @author Jeff Geerling, 2014
 # @author scottrigby
 
-# Warn that some commands will not be run if the script is not run as root.
+###############################################################################
+# Warn that some commands will not be run if the script is not run as root.   #
+###############################################################################
 if [[ $EUID -ne 0 ]]; then
   RUN_AS_ROOT=false
   printf "Certain commands will not be run without sudo privileges. To run as root, run the same command prepended with 'sudo', for example: $ sudo $0\n\n" | fold -s -w 80
@@ -24,7 +26,13 @@ else
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
 
-# Login items
+###############################################################################
+# Login items                                                                 #
+###############################################################################
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Arq.app", hidden:false}'
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Doit.im.app", hidden:false}'
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Simplenote.app", hidden:false}'
+osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Slack.app", hidden:false}'
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Spectacle.app", hidden:false}'
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Private Internet Access.app", hidden:false}'
 
@@ -57,9 +65,9 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
-if [[ "$RUN_AS_ROOT" = true ]]; then
-  sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-fi
+#if [[ "$RUN_AS_ROOT" = true ]]; then
+#  sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+#fi
 
 # Restart automatically if the computer freezes
 if [[ "$RUN_AS_ROOT" = true ]]; then
@@ -76,7 +84,7 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Set background to dark-grey color
-sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Library/Desktop Pictures/Solid Colors/Solid Gray Dark.png'"
+#sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '/Library/Desktop Pictures/Solid Colors/Solid Gray Dark.png'"
 
 ###############################################################################
 # SSD-specific tweaks                                                         #

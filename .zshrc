@@ -24,3 +24,5 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"

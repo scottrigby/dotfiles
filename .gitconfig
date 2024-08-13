@@ -1,12 +1,16 @@
 [user]
 	signingkey = C7C6FBB5B91C1155
-	email = scott@r6by.com
 	name = Scott Rigby
+	email = scott@r6by.com
 [commit]
-	gpgSign = true
+	gpgsign = true
 [tag]
-	gpgSign = true
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
+[credential]
+	helper = osxkeychain
 [init]
 	defaultBranch = main
 [pull]
-	rebase = true
+	ff = only

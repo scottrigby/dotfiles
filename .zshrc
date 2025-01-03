@@ -1,7 +1,6 @@
 # brew completions
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh-completions:${FPATH}"
 
   autoload -Uz compinit
   compinit
@@ -36,12 +35,12 @@ git() {
 }
 
 # Better search history. Alternatively use https://github.com/zsh-users/zsh-history-substring-search
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+#autoload -U up-line-or-beginning-search
+#autoload -U down-line-or-beginning-search
+#zle -N up-line-or-beginning-search
+#zle -N down-line-or-beginning-search
+#bindkey "$terminfo[kcuu1]" history-substring-search-up
+#bindkey "$terminfo[kcud1]" history-substring-search-down
 
 PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
 
@@ -52,9 +51,9 @@ PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
 # Ignore this message when installing go@1.17:
 # 	PATH="/usr/local/opt/go@1.17/bin:$PATH"
 
-source $HOME/.cargo/env
+#source $HOME/.cargo/env
 
-eval "$(zoxide init zsh)"
+#eval "$(zoxide init zsh)"
 
 export PATH="${PATH}:${HOME}/.krew/bin"
 
@@ -63,15 +62,25 @@ alias watch='watch '
 
 # Needed for Pulumi CLI
 # Source https://stackoverflow.com/a/74148162
-export DOCKER_HOST=unix:///Users/$USER/Library/Containers/com.docker.docker/Data/docker.raw.sock
+#export DOCKER_HOST=unix:///Users/$USER/Library/Containers/com.docker.docker/Data/docker.raw.sock
 
 # gke-gcloud-auth-plugin
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # python 3, when we don't also need python2
-alias pip="pip3"
-alias python="python3"
+#alias pip="pip3"
+#alias python="python3"
 
 # Go
 export PATH=$PATH:$(go env GOPATH)/bin
+
+export PATH=$PATH:$HOME/.linkerd2/bin
+
+# for Buoyant demos
+#export PATH=$PATH:$HOME/.local/bin
+
+# terraform
+alias tf="terraform"
+#autoload -U +X bashcompinit && bashcompinit
+#complete -o nospace -C /usr/local/bin/terraform terraform
